@@ -1,0 +1,64 @@
+
+@keyframes ripple {
+  100% {opacity: 0; transform: scale(2.5);}
+}
+
+@keyframes small-ripple {
+  100% {opacity: 0; transform: scale(1);}
+}
+
+.touch {
+  position:relative;
+  overflow:hidden;
+  transition: all 0.25s ease;
+  z-index:0;
+  &.-visible {
+    overflow: visible;
+  }
+}
+
+.touch-elem {
+  display: block;
+  position: absolute;
+  background:rgba(0, 0, 0, 0.10);
+  border-radius: 100%;
+  transform:scale(0);
+  z-index: 9999999;
+}
+
+.touch-elem.animate {
+  animation:ripple 0.25s ease("swift-out");
+}
+
+.touch.checkbox, .touch.radio, .touch.toggle {
+  overflow: visible;
+  .touch-elem.animate {
+    animation: small-ripple 0.15s ease("swift-out");
+
+  }
+}
+// 
+//
+// @each $color_name, $color in $colors {
+//   #app.colored.#{$color_name} {
+//
+//     $color-brightness: resolve-brightness($color);
+//     $light-text-brightness: resolve-brightness(#fff);
+//     $dark-text-brightness: resolve-brightness(#000);
+//
+//     @if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+//       .touch-elem {
+//         display: block;
+//         position: absolute;
+//         background:rgba(255, 255, 255, 0.70)
+//       }
+//     }
+//     @else {
+//       .touch-elem {
+//         display: block;
+//         position: absolute;
+//         background:rgba(0, 0, 0, 0.70)
+//       }
+//     }
+//   }
+// }

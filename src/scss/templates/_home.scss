@@ -1,0 +1,147 @@
+.home.page {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  .home-call-to-action-block {
+    user-select: none;
+  }
+  .home-world-map {
+    opacity: 1;
+    transition: all 150ms ease;
+  }
+  .page-centered {
+    opacity: 1;
+    transition: all 150ms ease;
+    align-self: center;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    .page-centered-left {
+      margin-right: 20px;
+    }
+    .page-centered-right {
+      margin-left: 20px;
+    }
+  }
+  .sentence {
+    // font-size: 6rem;
+  }
+  .multiselect {
+    position: relative;
+  }
+  &.animate {
+    .page-centered {
+      opacity: 0;
+    }
+    .home-world-map {
+      opacity: 0;
+    }
+  }
+  .separator {
+    margin: 0 10px;
+    color: rgba(0,0,0,0.3);
+  }
+}
+
+.page:not(.home) {
+  min-height: 100%;
+  height: auto;
+}
+
+@keyframes home-world-translation {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.home-world-map {
+  width: calc(100% - 0px);
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  svg {
+    width: 200%;
+    height: 100%;
+    position: relative;
+    transform: scale(1.2) translateY(0px);
+  }
+
+  g {
+    fill: rgba(0, 0, 0, 0.01)!important;
+    animation: home-world-translation 50s infinite linear;
+  }
+}
+
+.home-title {
+  margin-top: 10px;
+  b {
+    font-weight: 500!important;
+  }
+}
+
+.home-small-title {
+  position: relative;
+  color: rgba(0,0,0,0.3);
+  &-with-border {
+    border: 1px solid rgba(0,0,0,0.05);
+    background: rgba(0,0,0,0.01);
+    padding: 5px 10px;
+    // display: none;
+  }
+  transform: scale(0.7);
+  z-index: 9;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: $nav-font;
+  user-select: none;
+  margin: 0;
+  .home-title-span {
+    opacity: 0.5;
+    &:not(:last-of-type) {
+      margin:0 3px;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .home.page {
+    h1 {
+      font-size: 90%;
+    }
+    .home-small-title-with-border {
+        display: none;
+    }
+    .separator, .home-world-map {
+      display: none;
+    }
+    .dropdown, .multiselect {
+      width: 100%;
+      display: block!important;
+      margin: 0 auto!important;
+      .multiselect__single {
+        text-align: center;
+        width: 100%;
+        display: block;
+      }
+      .multiselect__select {
+        display: none;
+      }
+      .multiselect__tags {
+        padding-right: 10px;
+      }
+
+    }
+  }
+}

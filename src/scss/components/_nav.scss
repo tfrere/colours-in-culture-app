@@ -1,0 +1,161 @@
+
+.nav {
+  position: absolute;
+  transition: all 0ms ease;
+  z-index: $misc-z-index;
+  top: 20px;
+  left: 110px;
+  display: inline-block;
+  color: rgba(0,0,0,0.8);
+  vertical-align: middle;
+  user-select: none;
+  width: fit-content;
+  transform: translateY(-60px);
+  .nav-line {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100px;
+    background-color: rgba(0,0,0,0.2);
+    transition: all 200ms cubic-bezier(0.855, 0.275, 0.350, 1);
+  }
+  .nav-box {
+    display: inline-block;
+    padding: 0px 10px 10px 10px;
+    background-color: rgb(242,242,242);
+  }
+  .nav-link {
+    display: inline-block;
+    margin: 0 10px;
+    font-family: "Noto Sans";
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.3);
+    letter-spacing: 0.1rem;
+    opacity: 0.8;
+    font-weight: 600;
+    &.router-link-active {
+      color: rgba(0,0,0,0.7);
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &.active {
+    transform: translateY(0px);
+    transition: all 250ms ease;
+  }
+
+}
+
+
+
+
+@each $color_name, $color in $colors {
+
+  $color-brightness: resolve-brightness($color);
+  $light-text-brightness: resolve-brightness(#fff);
+  $dark-text-brightness: resolve-brightness(#000);
+
+  @if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+    .#{$color_name} .color .nav-link[href*="color"] {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .#{$color_name} .culture .nav-link[href*="culture"] {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .#{$color_name} .concept .nav-link[href*="concept"] {
+      color: rgba(255,255,255,0.9);
+    }
+  }
+  @else {
+    .#{$color_name} .color .nav-link[href*="color"] {
+      color: rgba(0,0,0,0.7);
+    }
+
+    .#{$color_name} .culture .nav-link[href*="culture"] {
+      color: rgba(0,0,0,0.7);
+    }
+
+    .#{$color_name} .concept .nav-link[href*="concept"] {
+      color: rgba(0,0,0,0.7);
+    }
+  }
+}
+
+.nav.color.white {
+  background-color: rgb(242, 242, 242);
+}
+
+
+@each $color_name, $color in $colors {
+  .nav.#{$color_name} {
+
+    $color-brightness: resolve-brightness($color);
+    $light-text-brightness: resolve-brightness(#fff);
+    $dark-text-brightness: resolve-brightness(#000);
+
+    .nav-box {
+      background-color: rgba(0,0,0,0.0);
+    }
+
+    @if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+
+      background-color: $color;
+
+      .nav-line {
+        background-color: rgba(255,255,255,0.7);
+      }
+      .nav-link {
+        color: rgba(255,255,255,0.7);
+        letter-spacing: 0.1rem;
+        &.router-link-active {
+          color: rgba(255,255,255,1);
+        }
+      }
+    }
+    @else {
+
+        background-color: $color;
+
+      .nav-line {
+        background-color: rgba(0,0,0,0.2);
+      }
+
+      .nav-link {
+        color: rgba(0,0,0,0.3);
+        letter-spacing: 0.1rem;
+        &.router-link-active {
+          color: rgba(0,0,0,0.7);
+        }
+      }
+    }
+  }
+}
+
+.nav.color.white {
+  background-color: rgb(242, 242, 242);
+}
+
+
+
+@media (max-width: 745px) {
+  .nav {
+    display: inline-block;
+    text-align: center;
+    left:0;
+    right:0;
+    margin: 0 auto;
+  }
+}
+
+
+
+@media (max-width: 545px) {
+  .nav .nav-link {
+    font-size: 80%;
+  }
+}

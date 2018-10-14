@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:200,300,400,500,600,700&Noto+Serif:200,300,400,500,600,700");
+
+@import "./core/math/_math.scss";
+
+@import "./core/_color.scss";
+@import "./core/_color-contrast.scss";
+@import "./core/_ease.scss";
+// @import "./core/_icons.scss";
+@import "./core/_media.scss";
+@import "./core/_base.scss";
+
+$nav-z-index: 3;
+$misc-z-index: 2;
+$page-z-index: 1;
+
+$header-z-index: 2;
+$footer-z-index: 2;
+$cards-z-index: 1;
+
+$border-color: rgb(242,242,242);
+
+html {
+  overflow-y: scroll;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.app-wrapper {
+  height: 100%;
+}
+
+#app {
+  background-color: white;
+  padding-bottom: 0px;
+  height: 100%;
+  opacity: 1;
+}
+
+.page {
+  z-index: $page-z-index;
+  position: relative;
+  transition: border 250ms ease("swift-in"), opacity 250ms ease("swift-in");
+  border: 20px solid rgb(242,242,242);
+  padding-bottom: 60px;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
+  .borders:before {
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid black;
+  }
+}
+
+@media (min-width: #{$tablet-width}) {
+  .page {
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: #{$mobile-width}) {
+  .page {
+    padding-bottom: 0px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+}
+
+// $colors: (
+//   "red": #cf3636,
+//   "green": #00b453,
+//   "blue": #437cc2,
+//   "yellow": #ffe500,
+//   // "gold": #ffe500,
+//   "white": #ffffff,
+//   "black": #171715,
+//   "grey": #7c7b7a,
+//   "pink": #fd649e,
+//   "purple": #9e539e,
+//   "indigo": #682887,
+//   "orange": #fe8b00,
+//   "brown": #ae672b
+// );
+
+// pastel retro colors
+$colors: (
+  "red": #D03B01,
+  "green": #A9CA0B,
+  "blue": #13A4DB,
+  "yellow": #FFCE00,
+  "white": #ffffff,
+  "black": #171715,
+  "grey": #7c7b7a,
+  "pink": #FF5A81,
+  "purple": #982BC4,
+  "indigo": #4a6d93,
+  "orange": #FF9E00,
+  "brown": #ae672b,
+  // "gold": #FFD700,
+);
+
+
+@keyframes home-border-color-animation {
+
+  0% {
+    border-color: #13A4DB;
+    color: #13A4DB;
+  }
+  20% {
+    border-color: #FF5A81;
+    color: #FF5A81;
+  }
+  30% {
+    border-color: #FF9E00;
+    color: #FF9E00;
+  }
+  40% {
+    border-color: #A9CA0B;
+    color: #A9CA0B;
+  }
+  50% {
+    border-color: #982BC4;
+    color: #982BC4;
+  }
+  60% {
+    border-color: #4a6d93;
+    color: #4a6d93;
+  }
+  70% {
+    border-color: #FF9E00;
+    color: #FF9E00;
+  }
+  100% {
+    border-color: #13A4DB;
+    color: #13A4DB;
+  }
+}
+
+.home.page, .home-small-title, .separator {
+  animation: home-border-color-animation 40s infinite linear;
+}
+
+
+
+@each $color_name, $color in $colors {
+  .page.#{$color_name} {
+    border-color: $color;
+  }
+  .pie .#{$color_name}, .line-slice.#{$color_name} {
+    background-color: $color;
+  }
+}
+
+
+.page.color.white {
+  border-color: rgb(242, 242, 242);
+}
+
+@import "./components/_github.scss";
+@import "./components/_color-drop.scss";
+@import "./components/_world-map.scss";
+@import "./components/_color-hex.scss";
+@import "./components/_touch.scss";
+@import "./components/_tooltip.scss";
+@import "./components/_nav.scss";
+@import "./components/_definition.scss";
+@import "./components/_tag-movin.scss";
+@import "./components/_header.scss";
+@import "./components/_sentence.scss";
+@import "./components/_dropdown.scss";
+@import "./components/_cards.scss";
+@import "./components/_select.scss";
+@import "./components/_tag.scss";
+@import "./components/_footer.scss";
+
+@import "./templates/_home.scss";

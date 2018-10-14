@@ -1,0 +1,51 @@
+.tag-movin-holder {
+  width: 40px;
+  height: 38px;
+  margin-top: 20px;
+  margin-left: 11px;
+  margin-right: 20px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.01);
+  cursor: pointer;
+  background: rgba(0,0,0,0);
+  overflow: hidden;
+  border-radius: 100%;
+  position: relative;
+  transform: scale(1.2);
+
+  svg {
+    margin-top:2px;
+    margin-left:-2px;
+    width: 40px;
+    height: 38px;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .tag-movin-holder {
+    display: none!important;
+  }
+}
+
+.wire {
+  stroke: rgb(240,240,240);
+  stroke-width: .3;
+}
+#tag {
+  fill: rgb(150,150,150);
+}
+
+#tag-dominant {
+  fill: transparent;
+}
+
+@each $color_name, $color in $colors {
+  .#{$color_name} #tag-dominant {
+    fill: $color!important;
+  }
+}
+
+.white #tag-dominant {
+  fill: transparent!important;
+}

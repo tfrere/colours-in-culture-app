@@ -1,0 +1,49 @@
+#color-drop {
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  transform: scale(1.2);
+}
+
+#clickable {
+  cursor: pointer;
+}
+
+#color-drop + .sentence {
+  margin-left: 70px;
+}
+
+#color-drop .click-holder {
+  cursor: pointer;
+}
+
+@each $color_name, $color in $colors {
+  .page.#{$color_name} .ring, .page.#{$color_name} #drip {
+   stroke: rgba($color, .1);
+   // stroke: rgb(240,240,240)!important;
+  }
+
+  .page.#{$color_name} #drip, .page.#{$color_name} .dot  {
+   fill: $color;
+  }
+
+}
+
+.page.white .ring, .page.white #drip {
+ stroke: grey;
+}
+
+.page.white #drip, .page.white .dot  {
+ fill: grey;
+}
+
+
+
+@media (max-width: 750px) {
+  #color-drop {
+    display: none !important;
+  }
+  .page.color .sentence {
+    margin: auto !important;
+  }
+}

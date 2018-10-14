@@ -1,0 +1,219 @@
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+
+
+.masonry-cards {
+  margin: 220px 80px 0px 65px!important;
+  width: calc(100% - 160px);
+  z-index: $cards-z-index;
+  position: relative;
+  transition: none;
+  animation: fade-in 650ms ease-in-out;
+}
+
+.masonry-card {
+  transition: none;
+  margin-bottom: 30px;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.1)!important;
+}
+
+@media (max-width: 750px) {
+  .masonry-cards {
+    margin-left: 0px !important;
+    margin-top: 270px!important;
+    width: 100%;
+    &>div {
+      border-width: 0 10px!important;
+    }
+  }
+  .masonry-card {
+    margin-bottom: 10px;
+  }
+}
+
+
+
+.card-box {
+  padding: 15px 15px 20px 15px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.1);
+  position: relative;
+  border: none!important;
+  &:hover, &:active, &:focus {
+    outline: 0;
+  }
+}
+
+.concept .card-box {
+  display: none;
+}
+
+.big-label {
+  font-size: 3rem;
+  display: inline-block;
+  letter-spacing: 0.1rem;
+  padding: 15px 15px;
+  font-weight: 600;
+  font-family: "Roboto";
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.5);
+  opacity: 1;
+  margin: 0;
+  margin-bottom: 5px;
+  cursor:pointer;
+  &:hover {
+    color: rgba(0,0,0,0.7);
+  }
+}
+
+.card-label {
+  font-size: 3rem;
+  width: calc(100% - 30px);
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  font-family: "Roboto";
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.3);
+  margin: 0;
+  margin-bottom: 15px;
+  cursor:pointer;
+  &:hover {
+    color: rgba(0,0,0,0.5);
+  }
+}
+
+
+$sqrt2: 1.414; // sqrt(2)
+$cornerSize: 20;
+
+$finalSize: $cornerSize * $sqrt2;
+$offset: $finalSize / 2 + 2;
+
+
+.masonry-card {
+  .-corner {
+    border-radius: 0;
+    border: none;
+    width:20px;
+    height:20px;
+    top:-1px;
+    right:-1px;
+    overflow: hidden;
+    z-index: 2;
+    position: absolute;
+    margin:0;
+    padding:0;
+    background: #fafafa;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0,0,0,0.1);
+    i {
+      position:absolute;
+      overflow: hidden;
+      z-index: 1;
+      padding: 4px 5px;
+      top:0;
+      right:0;
+    }
+    span {
+      top:0;
+      right:0;
+      position: absolute;
+      display: block;
+      margin: 0;
+      padding: 0;
+      margin: -2px 5px;
+      text-align: center;
+      min-width: 15px;
+    }
+    &:before {
+      position: absolute;
+      content: "";
+      width: $finalSize * 1px - 1px;
+      height: $finalSize * 1px - 1px;
+      border-radius:0;
+      transform:rotate(45deg);
+      background: rgba(255,255,255,1);
+      border:1px solid rgba(0,0,0,0.1);
+      top: - $offset * 1px + 1px;
+      right: - $offset * 1px + 1px;
+    }
+  }
+}
+
+
+@each $color_name, $color in $colors {
+
+  $color-brightness: resolve-brightness($color);
+  $light-text-brightness: resolve-brightness(#fff);
+  $dark-text-brightness: resolve-brightness(#000);
+
+  .masonry-card.#{$color_name} {
+
+    .card-label {
+      color: rgba(color-contrast($color), 0.75);
+    }
+
+    .name {
+      color: rgba(color-contrast($color), 0.50);
+      &:hover {
+        color: rgba(color-contrast($color), 0.70);
+      }
+    }
+
+    background-color: $color !important;
+
+    @if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+      .-corner {
+        background: lighten($color, 15%);
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        border-left: 1px solid rgba(255,255,255,0.3);
+        &:before {
+          background: white;
+          border:1px solid rgba(0,0,0,0.1);
+        }
+      }
+    }
+    @else
+    {
+      .-corner {
+        background: darken($color, 3%);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-left: 1px solid rgba(0,0,0,0.1);
+        &:before {
+          background: white;
+          border:1px solid rgba(255,255,255,0.1);
+        }
+      }
+    }
+
+  }
+
+}
+
+
+
+// @for $i from 1 through 24 {
+//   .masonry-cards.active .masonry-card:nth-child(#{$i}) {
+//     transition-delay: $i * 100ms;
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }

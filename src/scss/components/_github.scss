@@ -1,0 +1,99 @@
+
+
+
+  @keyframes octocat-wave {
+    0%, 100% {
+      transform:rotate(0);
+    }
+    20%, 60% {
+      transform:rotate(-20deg);
+    }
+    40%, 80% {
+      transform:rotate(10deg);
+    }
+  }
+
+  .github-corner {
+    opacity: 0;
+    position:absolute;
+    right:20px;
+    top:20px;
+    transform-origin: top right;
+    transform:scale(0.3);
+    z-index: 999;
+    overflow: hidden;
+  }
+
+  #app.culture, #app.color, #app.concept {
+    .github-corner {
+      opacity: 1;
+    }
+  }
+
+  .github-corner svg {
+    fill:rgba(0,0,0,0.05);
+    transition: fill 200ms ease;
+  }
+
+  .octo-arm {
+    transform-origin:130px 110px;
+  }
+
+  .github-corner svg .octo-arm, .github-corner svg .octo-body {
+    color:rgba(0,0,0,0.3);
+  }
+
+  .github-corner:hover .octo-arm {
+    animation: octocat-wave .56s;
+  }
+
+
+
+
+  @each $color_name, $color in $colors {
+
+    $color-brightness: resolve-brightness($color);
+    $light-text-brightness: resolve-brightness(#fff);
+    $dark-text-brightness: resolve-brightness(#000);
+
+    #app.color.#{$color_name} .github-corner svg {
+      fill: $color;
+    }
+
+    @if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+      #app.color.#{$color_name} .github-corner svg .octo-arm, #app.color.#{$color_name} .github-corner svg .octo-body {
+        color: rgba(255,255,255,0.4);
+        &:hover {
+          color: rgba(255,255,255,0.5);
+        }
+      }
+    }
+    @else
+    {
+      #app.color.#{$color_name} .github-corner svg .octo-arm, #app.color.#{$color_name} .github-corner svg .octo-body {
+        color: rgba(0,0,0,0.2);
+        &:hover {
+          color: rgba(0,0,0,0.5);
+        }
+      }
+    }
+  }
+
+
+  #app.color.white .github-corner svg {
+    fill: rgba(0,0,0,0.05);
+  }
+
+  #app.color.white .octo-arm, #app.color.white .octo-body {
+    color: rgba(0,0,0,0.3);
+    &:hover {
+      color: rgba(0,0,0,0.5);
+    }
+  }
+
+
+  @media (max-width: 1000px) {
+    #app .github-corner {
+      display: none;
+    }
+  }

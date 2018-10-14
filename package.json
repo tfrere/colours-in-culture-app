@@ -1,0 +1,65 @@
+{
+  "name": "colours-in-culture-fresh-start",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "deploy": "scp -r ./dist/* root@ns3011442.ip-37-187-16.eu:/var/www/colours-in-culture/",
+    "vuepress": "./nodes_modules/vuepress/bin/vuepress.js dev"
+  },
+  "dependencies": {
+    "gsap": "^2.0.2",
+    "mime": "^2.3.1",
+    "node-sass": "^4.9.3",
+    "nuxt": "^2.1.0",
+    "sass-loader": "^7.1.0",
+    "underscore": "^1.9.1",
+    "vue": "^2.5.17",
+    "vue-cookie": "^1.1.4",
+    "vue-directive-tooltip": "^1.4.5",
+    "vue-headful": "^2.0.1",
+    "vue-masonry-css": "^1.0.3",
+    "vue-multiselect": "^2.1.0",
+    "vue-resize": "^0.4.4",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.16",
+    "vuepress": "^0.14.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.0",
+    "@vue/cli-service": "^3.0.5",
+    "vue-cli-plugin-meta": "^0.1.1",
+    "vue-cli-plugin-scss-base": "^0.1.8",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/no-unused-vars": "off"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

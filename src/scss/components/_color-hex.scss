@@ -1,0 +1,29 @@
+.color-hex {
+  position: absolute;
+  top: 95px;
+  right: 95px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: $title-font;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+
+
+@each $color_name, $color in $colors {
+  .page.color.#{$color_name} {
+    .color-hex {
+      color: rgba($color, 1.3);
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .color-hex {
+      display: none;
+  }
+}
+
+.page.color.white .color-hex {
+  color: grey;
+}

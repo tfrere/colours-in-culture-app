@@ -1,0 +1,90 @@
+
+.tag {
+  display: inline-block;
+
+  padding: 2.5px 7.5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 1.5rem;
+
+  padding: 4px 9.5px;
+  margin-top: 8px;
+  margin-right: 8px;
+  font-size: 1.6rem;
+
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  word-break: no-wrap;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-weight: 800;
+  text-rendering: geometricPrecision;
+  background: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
+  &:active, &:focus {
+    background-color: rgba(0,0,0,0.1);
+  }
+  &:active, &:focus {
+    outline: 0;
+  }
+}
+
+@each $color_name, $color in $colors {
+
+  $color-brightness: resolve-brightness($color);
+  $light-text-brightness: resolve-brightness(#fff);
+  $dark-text-brightness: resolve-brightness(#000);
+
+  .masonry-card.#{$color_name} {
+
+
+    @if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+      .tag {
+        color: rgba(color-contrast($color), 1);
+        border: 1px solid rgba(color-contrast($color), 0.4);
+        background: transparent;
+        &:hover {
+          background-color: rgba(0,0,0,0.05);
+        }
+        &:active, &:focus {
+          background-color: rgba(0,0,0,0.1);
+        }
+      }
+    }
+    @else
+    {
+      .tag {
+        color: rgba(color-contrast($color), 1);
+        border: 1px solid rgba(color-contrast($color), 0.4);
+        background: transparent;
+        &:hover {
+          background-color: rgba(0,0,0,0.05);
+        }
+        &:active, &:focus {
+          background-color: rgba(0,0,0,0.1);
+        }
+      }
+    }
+
+  }
+
+}
+
+.white {
+
+  .tag {
+    color: rgba(grey, 1);
+    border: 1px solid rgba(grey, 0.4);
+    background: transparent;
+    &:hover {
+      background-color: rgba(0,0,0,0.05);
+    }
+    &:active, &:focus {
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+
+}
