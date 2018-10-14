@@ -7,7 +7,7 @@
     <header class="header active">
       <RotatingGlobe  v-if="isActive" :click="randomCulture" >
       </RotatingGlobe>
-      <h3 v-if="isActive" class="sentence">
+      <h1 v-if="isActive" class="sentence">
         colours in
         <Dropdown
           :options="cultures"
@@ -16,7 +16,7 @@
           :placeholder="'Select an Item'">
         </Dropdown>
         culture
-      </h3>
+      </h1>
     </header>
     <world-map v-if="isActive && culture && culture.epicenter" :x="culture.epicenter.x" :y="culture.epicenter.y" />
     <masonry

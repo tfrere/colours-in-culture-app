@@ -8,7 +8,7 @@
       <div class="tag-movin-holder" :class="dominant">
         <TagMovin v-if="isActive" :click="() => { randomConcept() }"></TagMovin>
       </div>
-      <h3 v-if="isActive" class="sentence" :class="{withDefinition: tag && tag.definition}">
+      <h1 v-if="isActive" class="sentence" :class="{withDefinition: tag && tag.definition}">
         <span class="pre">associated with </span>
         <Multiselect
           :value="tag"
@@ -33,7 +33,7 @@
             </span>
         </Multiselect>
         <p class="definition" v-if="tag && tag.definition" v-html="tag.definition"></p>
-      </h3>
+      </h1>
       <LineChart v-if="isActive && tag && tag.pie" :data="tag.pie"/>
 
     </header>

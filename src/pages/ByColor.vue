@@ -6,7 +6,7 @@
     />
     <header class="header active">
       <ColorDrop v-if="isActive" :click="randomColor"></ColorDrop>
-      <h3 v-if="isActive" class="sentence">
+      <h1 v-if="isActive" class="sentence">
         meaning of
         <Dropdown
           :hasColor="true"
@@ -16,7 +16,7 @@
           :placeholder="'Select an Item'">
         </Dropdown>
         in cultures
-      </h3>
+      </h1>
     </header>
     <div v-if="isActive" class="color-hex">{{color.hex}}</div>
 
