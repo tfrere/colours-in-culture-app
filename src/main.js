@@ -8,6 +8,7 @@ import ToolTip from "vue-directive-tooltip";
 import "vue-directive-tooltip/css/index.css";
 import VueResize from "vue-resize";
 import VueCookie from "vue-cookie";
+
 // register globally
 Vue.component("vue-headful", vueHeadful);
 Vue.component("multiselect", Multiselect);
@@ -20,11 +21,11 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: h => h(App),
-  mounted: () => document.dispatchEvent(new Event("x-app-rendered"))
+  render: (h) => h(App),
+  mounted: () => document.dispatchEvent(new Event("x-app-rendered")),
 }).$mount("#app");
 
 Vue.directive("title", {
   inserted: (el, binding) => (document.title = binding.value),
-  update: (el, binding) => (document.title = binding.value)
+  update: (el, binding) => (document.title = binding.value),
 });

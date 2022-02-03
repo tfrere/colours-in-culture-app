@@ -15,76 +15,101 @@
 </template>
 
 <script>
-
-import { TimelineMax, Power2, Elastic } from 'gsap';
-
+import { TimelineMax, Power2, Elastic } from "gsap";
 
 export default {
   name: "gsap",
   data() {
     return {
       isActive: false,
-      mainTl: new TimelineMax({repreat: -1})
-    }
+      mainTl: new TimelineMax({ repreat: -1 }),
+    };
   },
   props: {
     click: {
       type: Function,
-      default: () => { }
-    }
+      default: () => {},
+    },
   },
   mounted() {
-
     let tag = this.$refs.tag;
     let wire = this.$refs.wire;
 
-    const tl = new TimelineMax({repeat:-1});
+    const tl = new TimelineMax({ repeat: -1 });
     this.mainTl.add(tl);
     this.mainTl.timeScale(3);
     this.mainTl.play();
 
-      tl
-      .fromTo(wire,1,{attr:{d:'M0,4 10,5 20,4'}}, {attr:{d:'M0,4 40,5 20,4'}})
-      .fromTo(tag, 1, {
-       x: 0,
-       ease:Power2.easeOut
-      },
-      {
-       x: 30,
-       ease:Power2.easeOut
-     }, "-=1")
-      .fromTo(tag, 1, {
-       rotation: 0,
-       transformOrigin:'50% 15%',
-       ease:Elastic.easeOut.config(1, 0.3)
-      },
-      {
-       rotation: 25,
-       transformOrigin:'50% 15%',
-       ease:Elastic.easeOut.config(1, 0.3)
-     }, "-=1")
-     .set(tag, {}, "getOut")
-     .fromTo(wire,1,{attr:{d:'M0,4 -10,5 20,4'}}, {attr:{d:'M0,4 10,5 20,4'}})
-      .fromTo(tag, 1, {
-       x: -30,
-       ease:Power2.easeOut
-      },
-      {
-       x: 0,
-       ease:Power2.easeOut
-      }, "-=1")
-      .fromTo(tag, 2, {
-       rotation: 45,
-       transformOrigin:'50% 15%',
-       ease:Elastic.easeOut.config(1, 0.3),
-      },
-      {
-       rotation: 0,
-       transformOrigin:'50% 15%',
-       ease:Elastic.easeOut.config(1, 0.3),
-       onComplete:this.handlePause
-      }, "-=1");
-
+    tl.fromTo(
+      wire,
+      1,
+      { attr: { d: "M0,4 10,5 20,4" } },
+      { attr: { d: "M0,4 40,5 20,4" } }
+    )
+      .fromTo(
+        tag,
+        1,
+        {
+          x: 0,
+          ease: Power2.easeOut,
+        },
+        {
+          x: 60,
+          ease: Power2.easeOut,
+        },
+        "-=1"
+      )
+      .fromTo(
+        tag,
+        1,
+        {
+          rotation: 0,
+          transformOrigin: "50% 15%",
+          ease: Elastic.easeOut.config(1, 0.3),
+        },
+        {
+          rotation: 25,
+          transformOrigin: "50% 15%",
+          ease: Elastic.easeOut.config(1, 0.3),
+        },
+        "-=1"
+      )
+      .set(tag, {}, "getOut")
+      .fromTo(
+        wire,
+        1,
+        { attr: { d: "M0,4 -10,5 20,4" } },
+        { attr: { d: "M0,4 10,5 20,4" } }
+      )
+      .fromTo(
+        tag,
+        1,
+        {
+          x: -30,
+          ease: Power2.easeOut,
+        },
+        {
+          x: 0,
+          ease: Power2.easeOut,
+        },
+        "-=1"
+      )
+      .fromTo(
+        tag,
+        2,
+        {
+          rotation: 45,
+          transformOrigin: "50% 15%",
+          ease: Elastic.easeOut.config(1, 0.3),
+        },
+        {
+          rotation: 0,
+          transformOrigin: "50% 15%",
+          ease: Elastic.easeOut.config(1, 0.3),
+          onComplete: this.handlePause,
+        },
+        "-=1"
+      );
   },
   beforeDestroy() {
     setTimeout(() => {
@@ -107,13 +132,10 @@ export default {
       setTimeout(() => {
         this.click();
       }, 300);
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
-
 </style>

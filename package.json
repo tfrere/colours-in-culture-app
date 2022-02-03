@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "scp -r ./dist/* root@ns3011442.ip-37-187-16.eu:/var/www/colours-in-culture/",
+    "deploy": "scp ./dist/* tfrere@ns3018351.ip-5-39-76.eu:/work/coloursinculture/dist/",
     "nuxt": "nuxt"
   },
   "dependencies": {
@@ -14,7 +14,7 @@
     "gsap": "^2.0.2",
     "mime": "^2.3.1",
     "node-libs-browser": "^2.1.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.14.1",
     "nuxt": "^2.1.0",
     "sass-loader": "^7.1.0",
     "underscore": "^1.9.1",
@@ -35,7 +35,7 @@
     "@vue/cli-service": "^3.0.5",
     "prerender-spa-plugin": "^3.2.1",
     "vue-cli-plugin-meta": "^0.1.1",
-    "vue-cli-plugin-prerender-spa": "^1.0.2",
+    "vue-cli-plugin-prerender-spa": "^1.1.6",
     "vue-cli-plugin-scss-base": "^0.1.8",
     "vue-template-compiler": "^2.5.17"
   },

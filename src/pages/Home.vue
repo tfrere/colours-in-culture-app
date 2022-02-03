@@ -9,7 +9,8 @@
       <div class="page-centered">
         <h3 class="sentence">
           <h5 class="home-small-title home-small-title-with-border">colours<span class="home-title-span">in</span>culture<span class="home-title-span">.io</span></h5>
-          <h1 class="home-title">Get <b>color meanings</b><br/> from <b>all around</b> the<b> world</b> !</h1>
+          <h1 class="home-title"><b>Color meanings</b><br/> from <b>all around</b> the<b> world.</b></h1>
+          <!--<h1 class="home-title">color meanings<br/> from all around the world !</h1>-->
           <div class="home-call-to-action-block">
             <h5 class="home-small-title">Search by</h5><br/>
             <Dropdown
@@ -56,78 +57,79 @@
 </template>
 
 <script>
-  /* eslint-disable */
+/* eslint-disable */
 
-  import Button from '@/components/Button.vue';
-  import Dropdown from '@/components/Dropdown.vue';
-  import HomeWorldMap from '@/components/HomeWorldMap.vue';
-  import Multiselect from 'vue-multiselect'
+import Button from "@/components/Button.vue";
+import Dropdown from "@/components/Dropdown.vue";
+import HomeWorldMap from "@/components/HomeWorldMap.vue";
+import Multiselect from "vue-multiselect";
 
-  import whichCulture from '@/lib/colours-in-culture.js'
+import whichCulture from "@/lib/colours-in-culture.js";
 
-  import cultures from '@/datas/cultures.js'
-  import colors from '@/datas/colors.js'
-  import tags from '@/datas/tags.js'
-  import associatedTags from '@/datas/associated-tags.js'
+import cultures from "@/datas/cultures.js";
+import colors from "@/datas/colors.js";
+import tags from "@/datas/tags.js";
+import associatedTags from "@/datas/associated-tags.js";
 
-  export default {
-    name:"home",
-    data() {
-      return {
-        isActive: false,
-        hasChanged: false,
-        color: {name:"Color", value:"color"},
-        colors: colors,
-        culture: {name:"Culture", value:"culture"},
-        cultures: cultures,
-        tag: {name:"concept", value:"concept", label: "Concept"},
-        tags: tags,
-        title: "Home"
-      }
+export default {
+  name: "home",
+  data() {
+    return {
+      isActive: false,
+      hasChanged: false,
+      color: { name: "Color", value: "color" },
+      colors: colors,
+      culture: { name: "Culture", value: "culture" },
+      cultures: cultures,
+      tag: { name: "concept", value: "concept", label: "Concept" },
+      tags: tags,
+      title: "Home",
+    };
+  },
+  components: {
+    Dropdown,
+    Button,
+    Multiselect,
+    HomeWorldMap,
+  },
+  methods: {
+    activation() {
+      setTimeout(() => {
+        this.isActive = true;
+      }, 50);
     },
-    components: {
-      Dropdown,
-      Button,
-      Multiselect,
-      HomeWorldMap
-    },
-    methods: {
-      activation() {
-        setTimeout(() => {
-          this.isActive = true;
-        }, 50);
-      },
-      goToColor(color) {
-        this.hasChanged = true;
-        setTimeout(() => {
-          this.$router.push({ name: 'color', params: { color: color.value }});
-        }, 250);
-      },
-      goToConcept(tag) {
-        this.hasChanged = true;
-        setTimeout(() => {
-          this.$router.push({ name: 'concept', params: { concept: tag.value }});
-        }, 250);
-      },
-      goToCulture(culture) {
-        this.hasChanged = true;
-        setTimeout(() => {
-          this.$router.push({ name: 'culture', params: { culture: culture.value }});
-        }, 250);
-      }
-    },
-    beforeDestroy() {
+    goToColor(color) {
       this.hasChanged = true;
-      this.isActive = false;
+      setTimeout(() => {
+        this.$router.push({ name: "color", params: { color: color.value } });
+      }, 250);
     },
-    mounted() {
-      this.activation();
-    }
-  }
-
+    goToConcept(tag) {
+      this.hasChanged = true;
+      setTimeout(() => {
+        this.$router.push({ name: "concept", params: { concept: tag.value } });
+      }, 250);
+    },
+    goToCulture(culture) {
+      this.hasChanged = true;
+      setTimeout(() => {
+        this.$router.push({
+          name: "culture",
+          params: { culture: culture.value },
+        });
+      }, 250);
+    },
+  },
+  beforeDestroy() {
+    this.hasChanged = true;
+    this.isActive = false;
+  },
+  mounted() {
+    this.activation();
+  },
+};
 </script>
 
 
 <style>
-
 </style>

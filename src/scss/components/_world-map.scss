@@ -7,7 +7,7 @@
   right: 90px;
   svg {
     position: relative;
-    fill: rgba(0, 0, 0, 0.1);
+    fill: rgba(0, 0, 0, 0.2);
     width: 150px;
     height: 80px;
   }
@@ -19,16 +19,13 @@
 
 @media (max-width: 1100px) {
   .world-map {
-      display: none;
+    display: none;
   }
 }
 
-
-
-
 @keyframes ripple {
   0% {
-    opacity: .75;
+    opacity: 0.75;
     transform: scale(1);
   }
   100% {
@@ -36,7 +33,6 @@
     transform: scale(2);
   }
 }
-
 
 .culture-pin {
   background-color: black;
@@ -47,7 +43,8 @@
   width: 1rem;
   height: 1rem;
   position: absolute;
-  transition: border 200ms, background-color 200ms, height 200ms, width 200ms, transform 200ms ease;
+  transition: border 200ms, background-color 200ms, height 200ms, width 200ms,
+    transform 200ms ease;
   transform: translateX(-50%) translateY(-50%) scale(1);
   top: 0%;
   left: 0%;
@@ -55,11 +52,12 @@
   left: 15px;
 }
 
-.culture-pin:before, .culture-pin:after {
+.culture-pin:before,
+.culture-pin:after {
   background: transparent;
   border: solid 1px grey;
   border-radius: 50%;
-  content: '';
+  content: "";
   height: 100%;
   left: -1px;
   position: absolute;
@@ -70,12 +68,12 @@
 }
 
 .culture-pin:before {
-  animation-delay: .8s;
+  animation-delay: 0.8s;
 }
 
 .culture-pin:hover {
   background-color: rgba(0, 0, 0, 0.54);
-  border-color: rgb(0,0,0);
+  border-color: rgb(0, 0, 0);
   height: 2rem;
   width: 2rem;
 }

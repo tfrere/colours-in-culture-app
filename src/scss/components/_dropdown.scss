@@ -10,7 +10,7 @@
 }
 
 .dropdown__toggle {
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   min-width: 120px;
   padding: 10px 15px 12px 15px;
   text-transform: none;
@@ -26,14 +26,11 @@
   list-style-type: none;
 }
 
-
 @media (max-width: 575px) {
   .dropdown__toggle {
     font-size: 90%;
   }
 }
-
-
 
 .dropdown__color {
   width: 20px;
@@ -56,8 +53,8 @@
   z-index: 1000;
   float: left;
   width: 100%;
-  height: 215px;
-  overflow-y:scroll;
+  height: 190px;
+  overflow-y: scroll;
   min-width: 260px;
   padding: 5px 0;
   margin: 0;
@@ -82,7 +79,7 @@
   white-space: nowrap;
   text-decoration: none;
   transition: all 200ms ease;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   user-select: none;
   position: relative;
   .dropdown__color {
@@ -92,12 +89,10 @@
     margin-right: 10px;
     position: relative;
   }
-
-
 }
 
 .dropdown__menu > li > a:hover {
-  background: rgba(0,0,0,0.03);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .dropdown__menu > li {
@@ -113,10 +108,10 @@
       cursor: default;
       opacity: 0.5;
       &:before {
-        content:"✓";
+        content: "✓";
         position: absolute;
-        right:20px;
-        top:10px;
+        right: 20px;
+        top: 10px;
         opacity: 0.2;
       }
     }
@@ -126,7 +121,6 @@
       }
     }
   }
-
 }
 
 .dropdown__toggle__caret {
@@ -141,7 +135,7 @@
   border-right: 7px solid transparent;
   border-left: 6px solid transparent;
   float: right;
-  transition: transform .2s ease, -webkit-transform .2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
   transform: rotate(0deg);
 }
 
@@ -150,8 +144,6 @@
     transform: rotate(180deg);
   }
 }
-
-
 
 @each $color_name, $color in $colors {
   .#{$color_name}.dropdown__toggle {
@@ -162,19 +154,18 @@
     }
   }
   .dropdown__menu #{$color_name} {
-
   }
   .dropdown__color.#{$color_name} {
     background-color: $color !important;
   }
   a.#{$color_name} {
     color: $color !important;
-    text-shadow: 1px 1px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
   }
 }
 
 .white.dropdown__toggle {
-  color: grey!important;
+  color: grey !important;
   border-bottom: 1px dashed rgba(grey, 0.6);
   .dropdown__color {
     background-color: white !important;
@@ -185,15 +176,12 @@
 }
 
 a.white {
-  color: grey!important;
+  color: grey !important;
 }
-
 
 .white .dropdown__toggle__caret {
-  color: grey!important;
+  color: grey !important;
 }
-
-
 
 @media (max-width: 750px) {
   .dropdown__toggle__caret {
