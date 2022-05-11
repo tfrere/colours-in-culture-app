@@ -72,12 +72,14 @@
     height: 100%;
     position: relative;
     transform: scale(1.2) translateY(0px);
+    opacity: 0 ;
+    display: none;
   }
 
   g {
     stroke: #ededed;
-    fill: rgba(0, 0, 0, 0) !important;
-    animation: home-world-translation 50s infinite linear;
+    fill: rgb(247,247,247) !important;
+    // animation: home-world-translation 50s infinite linear;
   }
 }
 
