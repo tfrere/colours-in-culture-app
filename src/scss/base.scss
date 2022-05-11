@@ -38,7 +38,11 @@ html, body {
   background-color: white;
   padding-bottom: 0px;
   height: 100%;
-  opacity: 1;
+  opacity: 0;
+  transition:opacity 250ms ease("swift-in");
+  &.active {
+    opacity: 1;
+  }
 }
 
 .page {
